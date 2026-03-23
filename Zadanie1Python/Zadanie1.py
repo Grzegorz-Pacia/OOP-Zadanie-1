@@ -80,7 +80,37 @@ def main():
             print(str(temperature) + "°F = " + str((temperature - 32) / 1.8) + "°C")
 
 
-    #elif choice == 3:
+    elif choice == 3:
+        
+        gradeCount = 0
+        gradeNext = 0
+        gradeSum = 0
+        gradeAverage = 0
+
+        print("Podaj liczbę ocen, które chcesz wprowadzić:")
+        while 1:
+            gradeCount = IntegerInput()
+            if gradeCount > 0:
+                break
+            else:
+                print(errorText)
+        
+        for i in range(gradeCount):
+            print("Podaj ocenę nr. " + str(i+1) + " (skala ocen: 1-6):")
+            while 1:
+                gradeNext = IntegerInput()
+                if gradeNext == 1 or gradeNext == 2 or gradeNext == 3 or gradeNext == 4 or gradeNext == 5 or gradeNext == 6:
+                    break
+                else:
+                    print(errorText)
+            gradeSum += gradeNext
+
+        gradeAverage = gradeSum / gradeCount
+        print("Średnia: " + str(gradeAverage))
+        if gradeAverage >= 3:
+            print("Uczeń zdał.")
+        else:
+            print("Uczeń nie zdał.")
 
 
 if __name__ == "__main__":
