@@ -95,7 +95,8 @@ namespace Zadanie1C_
                     }
                     else if (mathOperator == '/')
                     {
-                        Console.WriteLine("Wynik: " + (Convert.ToDouble(a) / Convert.ToDouble(b)));
+                        double result = Convert.ToDouble(a) / b;
+                        Console.WriteLine("Wynik: {0:0.###}", result);
                     }
 
                     break;
@@ -144,6 +145,53 @@ namespace Zadanie1C_
 
 
                 case 3:
+
+                    int gradeCount, gradeNext, gradeSum = 0;
+                    double gradeAverage;
+
+                    Console.WriteLine("Podaj liczbę ocen, które chcesz wprowadzić:");
+                    while (true)
+                    {
+                        gradeCount = IntegerInput();
+                        if (gradeCount > 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine(errorText);
+                        }
+                    }
+
+                    for (int i = 0; i < gradeCount; i++)
+                    {
+                        Console.WriteLine("Podaj ocenę nr. " + (i+1) + " (skala ocen: 1-6):");
+                        while (true)
+                        {
+                            gradeNext = IntegerInput();
+                            if (gradeNext == 1 || gradeNext == 2 || gradeNext == 3 || gradeNext == 4 || gradeNext == 5 || gradeNext == 6)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine(errorText);
+                            }
+                        }
+                        gradeSum += gradeNext;
+                    }
+
+                    gradeAverage = Convert.ToDouble(gradeSum) / gradeCount;
+                    Console.WriteLine("Średnia: {0:0.00}", gradeAverage);
+                    if(gradeAverage >= 3)
+                    {
+                        Console.WriteLine("Uczeń zdał.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Uczeń nie zdał.");
+                    }
+
                     break;
             }
         }
