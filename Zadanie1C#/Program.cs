@@ -95,17 +95,103 @@ namespace Zadanie1C_
                     }
                     else if (mathOperator == '/')
                     {
-                        Console.WriteLine("Wynik: " + (Convert.ToDouble(a) / Convert.ToDouble(b)));
+                        double result = Convert.ToDouble(a) / b;
+                        Console.WriteLine("Wynik: {0:0.###}", result);
                     }
 
                     break;
 
 
                 case 2:
+
+                    int temperature;
+                    char convertionType;
+
+                    Console.WriteLine("Wybierz opcję konwersji temperatury:\n" +
+                                      "C - ze stopni Celciusza na Fahrenheita\n" +
+                                      "F - ze stopni Fahrenheita na Celciusza");
+                    while(true)
+                    {
+                        try
+                        {
+                            convertionType = Char.Parse(Console.ReadLine());
+                            if (convertionType == 'C' || convertionType == 'F')
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine(errorText);
+                            }
+                        }
+                        catch
+                        {
+                            Console.WriteLine(errorText);
+                        }
+                    }
+                    Console.WriteLine("Podaj temperaturę (°" + convertionType + "):");
+                    temperature = IntegerInput();
+
+                    if (convertionType == 'C')
+                    {
+                        Console.WriteLine(temperature + "°C = " + (temperature * 1.8 + 32) + "°F");
+                    }
+                    else if (convertionType == 'F')
+                    {
+                        Console.WriteLine(temperature + "°F = " + ((temperature - 32) / 1.8) + "°C");
+                    }
+                    
                     break;
 
 
                 case 3:
+
+                    int gradeCount, gradeNext, gradeSum = 0;
+                    double gradeAverage;
+
+                    Console.WriteLine("Podaj liczbę ocen, które chcesz wprowadzić:");
+                    while (true)
+                    {
+                        gradeCount = IntegerInput();
+                        if (gradeCount > 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine(errorText);
+                        }
+                    }
+
+                    for (int i = 0; i < gradeCount; i++)
+                    {
+                        Console.WriteLine("Podaj ocenę nr. " + (i+1) + " (skala ocen: 1-6):");
+                        while (true)
+                        {
+                            gradeNext = IntegerInput();
+                            if (gradeNext == 1 || gradeNext == 2 || gradeNext == 3 || gradeNext == 4 || gradeNext == 5 || gradeNext == 6)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine(errorText);
+                            }
+                        }
+                        gradeSum += gradeNext;
+                    }
+
+                    gradeAverage = Convert.ToDouble(gradeSum) / gradeCount;
+                    Console.WriteLine("Średnia: {0:0.00}", gradeAverage);
+                    if(gradeAverage >= 3)
+                    {
+                        Console.WriteLine("Uczeń zdał.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Uczeń nie zdał.");
+                    }
+
                     break;
             }
         }
