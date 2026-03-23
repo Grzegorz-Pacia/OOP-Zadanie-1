@@ -54,7 +54,32 @@ def main():
             print("Wynik: " + str(a/b))
         
 
-    #elif choice == 2:
+    elif choice == 2:
+
+        temperature = 0
+        convertionType = ''
+
+        print("Wybierz opcję konwersji temperatury:")
+        print("C - ze stopni Celciusza na Fahrenheita")
+        print("F - ze stopni Fahrenheita na Celciusza")
+        while 1:
+            try:
+                convertionType = str(input())
+                if convertionType == "C" or convertionType == "F":
+                    break
+                else:
+                    print(errorText)
+            except:
+                print(errorText)
+        print("Podaj temperaturę (°" + convertionType + "):")
+        temperature = IntegerInput()
+
+        if convertionType == "C":
+            print(str(temperature) + "°C = " + str(temperature * 1.8 + 32) + "°F")
+        elif convertionType == "F":
+            print(str(temperature) + "°F = " + str((temperature - 32) / 1.8) + "°C")
+
+
     #elif choice == 3:
 
 
