@@ -102,6 +102,44 @@ namespace Zadanie1C_
 
 
                 case 2:
+
+                    int temperature;
+                    char convertionType;
+
+                    Console.WriteLine("Wybierz opcję konwersji temperatury:\n" +
+                                      "C - ze stopni Celciusza na Fahrenheita\n" +
+                                      "F - ze stopni Fahrenheita na Celciusza");
+                    while(true)
+                    {
+                        try
+                        {
+                            convertionType = Char.Parse(Console.ReadLine());
+                            if (convertionType == 'C' || convertionType == 'F')
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine(errorText);
+                            }
+                        }
+                        catch
+                        {
+                            Console.WriteLine(errorText);
+                        }
+                    }
+                    Console.WriteLine("Podaj temperaturę (°" + convertionType + "):");
+                    temperature = IntegerInput();
+
+                    if (convertionType == 'C')
+                    {
+                        Console.WriteLine(temperature + "°C = " + (temperature * 1.8 + 32) + "°F");
+                    }
+                    else if (convertionType == 'F')
+                    {
+                        Console.WriteLine(temperature + "°F = " + ((temperature - 32) / 1.8) + "°C");
+                    }
+                    
                     break;
 
 
